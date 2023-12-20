@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3d product slider</title>
+ 
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <section>
+        <div class="container">
+            <div class="gallary">
+                <img src="./assets/product (1).png" alt="image" class="gallary-img">
+                <img src="./assets/product (2).png" alt="image" class="gallary-img">
+                <img src="./assets/product (3).png" alt="image" class="gallary-img">
+                <img src="./assets/product (4).png" alt="image" class="gallary-img">
+                <img src="./assets/product (5).png" alt="image" class="gallary-img">
+                <img src="./assets/product (6).png" alt="image" class="gallary-img">
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <script>
+
+        const imageGallary = document.querySelector('.gallary');
+        const images = document.querySelectorAll('.gallary img'); 
+
+        const productAngelTotalCount = 360 / imageGallary.children.length;
+
+
+        images.forEach((img, i) => {
+            img.style.transform = `rotate3d(0, 1, 0, ${(i + 1) * productAngelTotalCount}deg) translateZ(25rem)`
+        
+
+            img.addEventListener('click', ()=> {
+                imageGallary.style.transform= ` rotate3d(0, -1, 0, ${(i + 1) * productAngelTotalCount}deg) perspective(2000px)`;
+                imageGallary.style.scaly = `600px`
+            })
+        
+        
+        })
+
+
+        
+
+
+    </script>
+
+
+</body>
+
+</html>
