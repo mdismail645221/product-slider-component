@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3d product slider</title>
- 
+
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -20,6 +20,11 @@
                 <img src="./assets/product (5).png" alt="image" class="gallary-img">
                 <img src="./assets/product (6).png" alt="image" class="gallary-img">
             </div>
+
+            <div class="nextAndPreviousBtnWrapper">
+                <button class="btn-previous">Previous</button>
+                <button class="btn-next">Next</button>
+            </div>
         </div>
     </section>
 
@@ -29,25 +34,38 @@
     <script>
 
         const imageGallary = document.querySelector('.gallary');
-        const images = document.querySelectorAll('.gallary img'); 
+        const images = document.querySelectorAll('.gallary img');
 
         const productAngelTotalCount = 360 / imageGallary.children.length;
+
+        const nextBtn = document.querySelector('.btn-next')
 
 
         images.forEach((img, i) => {
             img.style.transform = `rotate3d(0, 1, 0, ${(i + 1) * productAngelTotalCount}deg) translateZ(25rem)`
-        
 
-            img.addEventListener('click', ()=> {
-                imageGallary.style.transform= ` rotate3d(0, -1, 0, ${(i + 1) * productAngelTotalCount}deg) perspective(2000px)`;
-                imageGallary.style.scaly = `600px`
+
+            img.addEventListener('click', () => {
+                imageGallary.style.transform = ` rotate3d(0, -1, 0, ${(i + 1) * productAngelTotalCount}deg) perspective(2000px)`;
+                // imageGallary.style.width = `600px`
             })
-        
-        
+
         })
 
 
-        
+
+        nextBtn.addEventListener('click', () => {
+            images.forEach((img, i) => {
+                img.style.transform = `rotate3d(0, 1, 0, ${(i + 1) * productAngelTotalCount}deg) translateZ(25rem)`
+                imageGallary.style.transform = `rotate3d(0, -1, 0, ${(i + 1) * productAngelTotalCount}deg) perspective(2000px)`;
+
+            })
+        })
+
+
+
+
+
 
 
     </script>
